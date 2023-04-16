@@ -16,34 +16,44 @@ which will then generate a random number. then use Math.floor to get the number 
 function getComputerChoice() {
   const choices = ["rock", "paper", "scissors"];
   let computerChoice = choices[Math.floor(Math.random() * choices.length)];
-    console.log(computerChoice);
   return computerChoice;
 }
-getComputerChoice();
+console.log(getComputerChoice());
+const getPlayerChoice = prompt("What do you choose?").toLowerCase();
 
-function getPlayerChoice() {
-    const playerInput = prompt("What is your weapon? ").toLowerCase();
-    console.log(playerInput);
-    return playerInput;
-}
 
 
 function theGame (getComputerChoice, getPlayerChoice) {
-    if (getComputerChoice === "rock" && getPlayerChoice === "rock") {
-        console.log("tie");
-    } else if (getComputerChoice === "rock" && getPlayerChoice === "paper") {
-        console.log("You Lose");
-    } else {
-        console.log("you win")
+    switch (getPlayerChoice) {
+        case "rock":
+            if(getComputerChoice === "rock") {
+                return("Tie");
+            } else if (getComputerChoice === "paper") {
+                return("You Win");
+            } else {
+                return("You Lose");
+            }
+            break;
+        
+        case "paper": 
+        if(getComputerChoice === "paper") {
+            return("Tie");
+        } else if (getComputerChoice === "scissors") {
+            return("You Win");
+        } else {
+            return("You Lose");
+        }
+        break;
+        case "scissors":
+            if(getComputerChoice === "scissors") {
+                return("Tie");
+            } else if (getComputerChoice === "rock") {
+                return("You Win");
+            } else {
+                return("You lose");
+            }
+            break;
     }
 }
 
-function theRound(rounds) {
-    for (let i = 0; i < rounds; i++) {
-        getComputerChoice();
-        getPlayerChoice();
-        theGame();
-    }
-}
-
-theRound(5);
+console.log(theGame(getComputerChoice, getPlayerChoice));
