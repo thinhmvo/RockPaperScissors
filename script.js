@@ -19,41 +19,67 @@ function getComputerChoice() {
   return computerChoice;
 }
 console.log(getComputerChoice());
-const getPlayerChoice = prompt("What do you choose?").toLowerCase();
 
-
-
-function theGame (getComputerChoice, getPlayerChoice) {
-    switch (getPlayerChoice) {
-        case "rock":
-            if(getComputerChoice === "rock") {
-                return("Tie");
-            } else if (getComputerChoice === "paper") {
-                return("You Win");
-            } else {
-                return("You Lose");
-            }
-            break;
-        
-        case "paper": 
-        if(getComputerChoice === "paper") {
-            return("Tie");
-        } else if (getComputerChoice === "scissors") {
-            return("You Win");
-        } else {
-            return("You Lose");
-        }
-        break;
-        case "scissors":
-            if(getComputerChoice === "scissors") {
-                return("Tie");
-            } else if (getComputerChoice === "rock") {
-                return("You Win");
-            } else {
-                return("You lose");
-            }
-            break;
-    }
+function getPlayerChoice() {
+  let playerChoice = prompt("What do you choose?").toLowerCase();
+  return playerChoice;
 }
 
-console.log(theGame(getComputerChoice, getPlayerChoice));
+/*
+function checkWinner() {
+    if (getComputerChoice === getPlayerChoice) {
+        return "Tie";
+    } else if (getPlayerChoice === "rock") {
+        return(getComputerChoice === "scissors") ? "You Win" : "You Lose";
+    } else if (getPlayerChoice === "paper") {
+        return(getComputerChoice === "rock" ) ? "You Win" : "You Lose";
+    } else if (getPlayerChoice === "scissors") {
+        return
+    }
+}
+*/
+
+function theGame(getComputerChoice, getPlayerChoice) {
+  switch (getPlayerChoice) {
+    case "rock":
+      console.log("Computer choice: ", getComputerChoice);
+      console.log("Player choice: ", getPlayerChoice);
+      console.log("Comparison:", getComputerChoice === getPlayerChoice);
+      if (getComputerChoice === getPlayerChoice) {
+        return "Tie";
+      } else if (getComputerChoice === "paper") {
+        return "You lose";
+      } else {
+        return "You win";
+      }
+
+      break;
+
+    case "paper":
+      if (getComputerChoice === getPlayerChoice) {
+        return "Tie";
+      } else if (getComputerChoice === "scissors") {
+        return "You Lose";
+      } else {
+        return "You Win";
+      }
+      break;
+    case "scissors":
+      if (getComputerChoice === getPlayerChoice) {
+        return "Tie";
+      } else if (getComputerChoice === "rock") {
+        return "You Lose";
+      } else {
+        return "You Win";
+      }
+      break;
+  }
+}
+const numerOfGame = parseInt(prompt("How many rounds would you like to play?"));
+function gameTurn(numerOfGame) {
+  for (let i = 0; i < numerOfGame; i++) {
+    console.log(theGame(getComputerChoice(), getPlayerChoice()));
+  }
+}
+
+gameTurn(numerOfGame);
