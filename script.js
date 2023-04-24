@@ -20,24 +20,8 @@ function getComputerChoice() {
 }
 console.log(getComputerChoice());
 
-function getPlayerChoice() {
-  let playerChoice = prompt("What do you choose?").toLowerCase();
-  return playerChoice;
-}
 
-/*
-function checkWinner() {
-    if (getComputerChoice === getPlayerChoice) {
-        return "Tie";
-    } else if (getPlayerChoice === "rock") {
-        return(getComputerChoice === "scissors") ? "You Win" : "You Lose";
-    } else if (getPlayerChoice === "paper") {
-        return(getComputerChoice === "rock" ) ? "You Win" : "You Lose";
-    } else if (getPlayerChoice === "scissors") {
-        return
-    }
-}
-*/
+
 
 function theGame(getComputerChoice, getPlayerChoice) {
   switch (getPlayerChoice) {
@@ -75,11 +59,18 @@ function theGame(getComputerChoice, getPlayerChoice) {
       break;
   }
 }
+/*
 const numerOfGame = parseInt(prompt("How many rounds would you like to play?"));
 function gameTurn(numerOfGame) {
   for (let i = 0; i < numerOfGame; i++) {
     console.log(theGame(getComputerChoice(), getPlayerChoice()));
   }
 }
+*/
+const rockBtn = document.querySelector('#p-rock');
 
-gameTurn(numerOfGame);
+rockBtn.addEventListener('click', () => {
+  let getPlayerChoice = 'rock';
+  return console.log(theGame(getComputerChoice(), getPlayerChoice));
+});
+
