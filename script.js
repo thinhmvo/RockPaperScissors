@@ -12,6 +12,18 @@ Create a rock paper scissor game
 /* Function for computer choice. Using Math.random() to generae a random number between 0 - 1 then multiply it with the length of the choices[array]
 which will then generate a random number. then use Math.floor to get the number and select the item in the position of the array.
 */
+const container = document.querySelector("#gameResultContainer");
+const gameResult = document.createElement('p');
+const playerChoice = document.querySelector('.playerChoice');
+const playerChoiceOutput = document.createElement('p');
+const computerChoiceContainer = document.querySelector('.computerChoiceContainer');
+const computerChoiceOutput = document.createElement('p');
+
+const rockBtn = document.querySelector('#p-rock');
+const paperBtn = document.querySelector('#p-paper');
+const scissorsBtn = document.querySelector('#p-scissors');
+
+
 
 function getComputerChoice() {
   const choices = ["rock", "paper", "scissors"];
@@ -29,6 +41,9 @@ function theGame(getComputerChoice, getPlayerChoice) {
       console.log("Computer choice: ", getComputerChoice);
       console.log("Player choice: ", getPlayerChoice);
       console.log("Comparison:", getComputerChoice === getPlayerChoice);
+      computerChoiceOutput.textContent = getComputerChoice;
+      computerChoiceContainer.appendChild(computerChoiceOutput);
+      console.log(computerChoiceOutput);
       if (getComputerChoice === getPlayerChoice) {
         return "Tie";
       } else if (getComputerChoice === "paper") {
@@ -40,6 +55,8 @@ function theGame(getComputerChoice, getPlayerChoice) {
       break;
 
     case "paper":
+      computerChoiceOutput.textContent = getComputerChoice;
+      computerChoiceContainer.appendChild(computerChoiceOutput);
       if (getComputerChoice === getPlayerChoice) {
         return "Tie";
       } else if (getComputerChoice === "scissors") {
@@ -49,6 +66,8 @@ function theGame(getComputerChoice, getPlayerChoice) {
       }
       break;
     case "scissors":
+      computerChoiceOutput.textContent = getComputerChoice;
+      computerChoiceContainer.appendChild(computerChoiceOutput);
       if (getComputerChoice === getPlayerChoice) {
         return "Tie";
       } else if (getComputerChoice === "rock") {
@@ -59,6 +78,30 @@ function theGame(getComputerChoice, getPlayerChoice) {
       break;
   }
 }
+rockBtn.addEventListener('click', () => {
+  let getPlayerChoice = 'rock';
+  playerChoiceOutput.textContent = getPlayerChoice;
+  playerChoice.appendChild(playerChoiceOutput);
+  return gameResult.textContent = theGame(getComputerChoice(), getPlayerChoice);
+}
+);
+paperBtn.addEventListener('click', () => {
+  let getPlayerChoice = 'paper';
+  playerChoiceOutput.textContent = getPlayerChoice;
+  playerChoice.appendChild(playerChoiceOutput);
+  computerChoiceContainer.appendChild(computerChoiceOutput);
+  return gameResult.textContent = theGame(getComputerChoice(), getPlayerChoice);
+});
+scissorsBtn.addEventListener('click', () => {
+  let getPlayerChoice = 'scissors';
+  playerChoiceOutput.textContent = getPlayerChoice;
+  playerChoice.appendChild(playerChoiceOutput);
+  computerChoiceContainer.appendChild(computerChoiceOutput);
+  return gameResult.textContent = theGame(getComputerChoice(), getPlayerChoice);
+});
+
+container.appendChild(gameResult);
+
 /*
 const numerOfGame = parseInt(prompt("How many rounds would you like to play?"));
 function gameTurn(numerOfGame) {
@@ -67,10 +110,3 @@ function gameTurn(numerOfGame) {
   }
 }
 */
-const rockBtn = document.querySelector('#p-rock');
-
-rockBtn.addEventListener('click', () => {
-  let getPlayerChoice = 'rock';
-  return console.log(theGame(getComputerChoice(), getPlayerChoice));
-});
-
